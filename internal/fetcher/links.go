@@ -66,7 +66,8 @@ func getLinks(rawurl string) ([]string, error) {
 		return nil, errors.WithMessagef(err, "[%s] cannot extract links from %s",
 			configs.Data.MS["storm"].Title, rawurl)
 	} else {
-		links = linksFilter(links, `https://tw.storm.com/\w+/\d+/.*`)
+		links = linksFilter(links, `https://www.storm.mg/[article|lifestyle]+/\d+\b`)
+		links = kickOutLinksMatchPath(links, "articles")
 		return gears.StrSliceDeDupl(links), nil
 	}
 }

@@ -6,7 +6,7 @@ import (
 )
 
 func TestGetLinks(t *testing.T) {
-	links, err := getLinks("https://tw.storm.com/realtime/new/")
+	links, err := getLinks("https://www.storm.mg/articles")
 	if err != nil {
 		t.Error(err)
 	}
