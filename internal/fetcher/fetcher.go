@@ -51,8 +51,9 @@ func fetch(ctx context.Context) (as []*Article, err error) {
 			a, err = a.fetchArticle(link)
 			if err != nil {
 				if errors.Is(err, ErrTimeOverDays) ||
+					errors.Is(err, ErrIgnoreCate) ||
 					errors.Is(err, context.DeadlineExceeded) {
-					log.Printf("[%s] predictability error: %v, link: %s",
+					log.Printf("[%s] predictability info: %v, link: %s",
 						configs.Data.MS["storm"].Title, err, link)
 				} else {
 					log.Printf("[%s] fetch unexpected error: %v, link: %s",

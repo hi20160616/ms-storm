@@ -14,8 +14,8 @@ func TestFetchTitle(t *testing.T) {
 		url   string
 		title string
 	}{
-		{"https://tw.storm.com/local/20211015/EJNCNTZMQVE5TE2PHRHB5MN3HY/", "K律師論點｜城中城大火若是人禍　究責關鍵先釐清這事"},
-		{"https://tw.storm.com/politics/20211012/GTRJUAUOXBAUXIIQZEAR72XHSI/", "網傳綠營大老舔共文　讚「兩岸只有親情和恩情」？當事人說話了"},
+		{"https://www.storm.mg/article/3974235", "觀點投書：說好的不是一日球迷呢？台灣體育的卑微"},
+		{"https://www.storm.mg/article/4018173", "藍綠備戰“中二選區”立委補選　“話題女王”林靜儀聲量高力壓顏寬恒"},
 	}
 	for _, tc := range tests {
 		a := NewArticle()
@@ -50,8 +50,8 @@ func TestFetchUpdateTime(t *testing.T) {
 		url  string
 		want string
 	}{
-		{"https://tw.storm.com/local/20211015/EJNCNTZMQVE5TE2PHRHB5MN3HY/", "2021-10-15 16:13:47.476 +0800 UTC"},
-		{"https://tw.storm.com/politics/20211012/GTRJUAUOXBAUXIIQZEAR72XHSI/", "2021-10-12 20:36:20.657 +0800 UTC"},
+		{"https://www.storm.mg/article/3974235", "2021-10-09 05:30:01 +0800 UTC"},
+		{"https://www.storm.mg/article/4018173", "2021-10-29 09:26:40 +0800 UTC"},
 	}
 	var err error
 	for _, tc := range tests {
@@ -84,10 +84,8 @@ func TestFetchContent(t *testing.T) {
 		url  string
 		want string
 	}{
-		{"https://tw.storm.com/property/20211021/2ICEHGCCWRFNXOLYWGGHGEIJDA/", "K律師論點｜城中城大火若是人禍　究責關鍵先釐清這事"},
-		{"https://tw.storm.com/local/20211015/EJNCNTZMQVE5TE2PHRHB5MN3HY/", "K律師論點｜城中城大火若是人禍　究責關鍵先釐清這事"},
-		{"https://tw.storm.com/politics/20211012/GTRJUAUOXBAUXIIQZEAR72XHSI/", "網傳綠營大老舔共文　讚「兩岸只有親情和恩情」？當事人說話了"},
-		{"https://tw.storm.com/property/20211025/SARWV3SGOZALZJVUMBLTSM6EYI/", ""},
+		{"https://www.storm.mg/article/3974235", "觀點投書：說好的不是一日球迷呢？台灣體育的卑微"},
+		{"https://www.storm.mg/article/4018173", "藍綠備戰“中二選區”立委補選　“話題女王”林靜儀聲量高力壓顏寬恒"},
 	}
 	var err error
 
@@ -115,9 +113,8 @@ func TestFetchArticle(t *testing.T) {
 		url string
 		err error
 	}{
-		{"https://tw.storm.com/local/20211015/EJNCNTZMQVE5TE2PHRHB5MN3HY/", ErrTimeOverDays},
-		{"https://tw.storm.com/property/20211021/2ICEHGCCWRFNXOLYWGGHGEIJDA/", ErrTimeOverDays},
-		{"https://tw.storm.com/property/20211025/SARWV3SGOZALZJVUMBLTSM6EYI/", nil},
+		{"https://www.storm.mg/article/3974235", ErrTimeOverDays},
+		{"https://www.storm.mg/article/4018173", nil},
 	}
 	for _, tc := range tests {
 		a := NewArticle()
